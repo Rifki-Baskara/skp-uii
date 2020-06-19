@@ -101,7 +101,9 @@
                                                                 <td>{{$data->tanggal_mulai}}</td>
                                                                 <td>{{$data->status}}</td>
                                                                 <td>
-											                        <a class="btn btn-link" href="/mahasiswa/laporan/edit/{{ $data->id }}"><i class="fa fa-pencil" style="color:#093697"></i></a>
+                                                                    @if ($data->status !== 'Disetujui' && $data->status !== 'Disetujui dan layak masuk SKPI')
+                                                                    <a class="btn btn-link" href="/mahasiswa/laporan/edit/{{ $data->id }}"><i class="fa fa-pencil" style="color:#093697"></i></a>
+                                                                    @endif
 											                        <a class="btn btn-link" href="/mahasiswa/laporan/show/{{ $data->id }}"><i class="fa fa-eye" style="color:#093697"></i></a>
 										                        </td>
                                                             @endforeach   

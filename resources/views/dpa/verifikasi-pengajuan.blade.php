@@ -99,13 +99,13 @@
                                             <select class="form-control @error('status') is-invalid @enderror" name="status" id="verifikasiSelector">
                                                 <option value="" disabled>- Pilih -</option>
                                                 <option value="Disetujui">Disetujui</option>  
-                                                <option value="skpi">Disetujui dan layak masuk SKPI</option>
+                                                <option value="Disetujui dan layak masuk SKPI">Disetujui dan layak masuk SKPI</option>
                                                 <option value="Revisi">Revisi</option>
                                                 <option value="Ditolak">Ditolak</option>
                                             </select>
                                         </div>
                                         <div class="form-group" style="display: none;" id="kategori">
-                                            <label for="" class="form-control-label">Kategori Informasi Tambahan</label>
+                                            <label for="kategori" class="form-control-label">Kategori Informasi Tambahan</label>
                                             <select class="form-control" name="kategori">
                                                 <option value="" selected="selected">- Pilih -</option>
                                                 <option value="Keterampilan">Keterampilan</option>  
@@ -147,7 +147,7 @@
                     $('#komentar').show(); 
                 }else if(this.value=="Ditolak"){
                     $('#komentar').show();
-                }else if (this.value=="skpi"){
+                }else if (this.value=="Disetujui dan layak masuk SKPI"){
                     $('#kategori').show(); 
                 }else{$('#komentar' & '#kategori').hide()}
             });

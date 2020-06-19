@@ -36,7 +36,7 @@
                                         <th>No</th>
                                         <th>Jenjang</th>
                                         <th>NIM</th>
-										<th>Nama Mahasiswa</th>		
+                                        <th>Nama Mahasiswa</th>		
 									</tr>
 								</thead>
 								<tbody>
