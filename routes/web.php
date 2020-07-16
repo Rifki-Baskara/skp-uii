@@ -125,6 +125,7 @@ Route::get('/adminskppilihan/aktivitas-kemahasiswaan/delete/{id}', 'AktivitasKem
 Route::get('/dpa', 'DPALaporanController@landingPg');
 Route::get('/dpa/laporan', 'DPALaporanController@skpmasuk');
 Route::get('/dpa/daftar', 'DPALaporanController@tampil');
+Route::get('/dpa/daftar/show/{id}', 'DPALaporanController@tampilmhs');
 Route::get('/dpa/laporan/show/{id}', 'DPALaporanController@show');
 Route::post('/dpa/laporan/update/{id}', 'DPALaporanController@update');
 //laporan skp pilihan

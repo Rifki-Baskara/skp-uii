@@ -17,7 +17,63 @@ class PengajuanSkpPilihanController extends Controller
     {
         $pengajuanPilihan = PengajuanSkpPilihan::where ('nim', Auth::guard('mahasiswa')->user()->username)->get();
         $tampilSkpWajib = DataMhsSkpWajib::where ('mahasiswa_username', Auth::guard('mahasiswa')->user()->username)->get();
-        return view('mahasiswa.laporan-skp-mahasiswa',compact('pengajuanPilihan', 'tampilSkpWajib'));
+
+        if (Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Sarjana')
+        {
+            $pilihansarjana = PengajuanSkpPilihan::where ('nim', Auth::guard('mahasiswa')->user()->username)->get();
+            $jumlahsarjana = 0;
+            foreach ($pilihansarjana as $jmls) {
+                $jumlahsarjana = $jmls->poin + $jumlahsarjana;
+            }
+            $wajibsarjana = DataMhsSkpWajib::where ('mahasiswa_username', Auth::guard('mahasiswa')->user()->username)->get();
+            $wajibs = 0;
+            foreach ($wajibsarjana as $jmlwajibs) {
+                $wajibs = $jmlwajibs->poin_skp + $wajibs;
+            }
+        }
+        else if (Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Diploma')
+        {
+            $pilihandiploma = PengajuanSkpPilihan::where ('nim', Auth::guard('mahasiswa')->user()->username)->get();
+            $jumlahdiploma = 0;
+            foreach ($pilihandiploma as $jmld) {
+                $jumlahdiploma = $jmld->poin + $jumlahdiploma;
+            }    
+            $wajibdiploma = DataMhsSkpWajib::where ('mahasiswa_username', Auth::guard('mahasiswa')->user()->username)->get();
+            $wajibd = 0;
+            foreach ($wajibdiploma as $jmlwajibd) {
+                $wajibd = $jmlwajibd->poin + $wajibd;
+            }    
+        }
+        else if (Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
+        {
+            $pilihan3 = PengajuanSkpPilihan::where ('nim', Auth::guard('mahasiswa')->user()->username)->get();
+            $jumlah3 = 0;
+            foreach ($pilihan3 as $jml3) {
+                $jumlah3 = $jml3->poin + $jumlah3;
+            }  
+            $wajib3 = DataMhsSkpWajib::where ('mahasiswa_username', Auth::guard('mahasiswa')->user()->username)->get();
+            $jumlahwajib3 = 0;
+            foreach ($wajib3 as $jmlwajib3) {
+                $jumlahwajib3 = $jmlwajib3->poin_skp + $jumlahwajib3;
+            }     
+        } 
+        else if (Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi')
+        {
+            $pilihan4 = PengajuanSkpPilihan::where ('nim', Auth::guard('mahasiswa')->user()->username)->get();
+            $jumlah4 = 0;
+            foreach ($pilihan4 as $jml4) {
+                $jumlah4 = $jml4->poin + $jumlah4;
+            }
+            $wajib4 = DataMhsSkpWajib::where ('mahasiswa_username', Auth::guard('mahasiswa')->user()->username)->get();
+            $jumlahwajib4 = 0;
+            foreach ($wajib4 as $jmlwajib4) {
+                $jumlahwajib4 = $jmlwajib4->poin_skp + $jumlahwajib4;
+            }    
+        } 
+        return view('mahasiswa.laporan-skp-mahasiswa',compact('pengajuanPilihan', 'tampilSkpWajib'
+        ,'pilihansarjana','jumlahsarjana','pilihandiploma',
+        'jumlahdiploma','pilihan3','jumlah3','pilihan4','jumlah4',
+        'wajib4','jumlahwajib4','wajib3','jumlahwajib3','wajibdiploma','wajibd','wajibsarjana','wajibs'));
     }
     public function create()
     {

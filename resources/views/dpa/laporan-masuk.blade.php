@@ -39,6 +39,7 @@
                                         <th>NIM</th>
                                         <th>Nama Kegiatan</th>
                                         <th>Waktu Pelaksanaan</th>
+                                        <th>Waktu Pengajuan</th>
                                         <th>Aksi</th>			
 									</tr>
 								</thead>
@@ -51,6 +52,7 @@
                                         <td>{{$data->nim}}</td>
                                         <td>{{$data->nama_kegiatan}}</td>
                                         <td>{{$data->tanggal_mulai}}</td>
+                                        <td>{{$data->created_at}}</td>
                                         <td>
                                             <a class="btn btn-link" href="/dpa/laporan/show/{{ $data->id }}"><i class="fa fa-pencil" style="color:#093697"></i></a>
                                         </td>

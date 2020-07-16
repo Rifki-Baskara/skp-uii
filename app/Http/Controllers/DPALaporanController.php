@@ -74,10 +74,11 @@ class DPALaporanController extends Controller
     }
     public function tampil()
     {
-        $daftarmhs = Mahasiswa::where ('dpa_id', Auth::guard('dpa')->user()->id)
+        $daftarmhs = Mahasiswa::where ('dpa_id', Auth::guard('dpa')->user()->id)/*->where('angkatan',$angkatan)*/
         // ->leftJoin('mahasiswaskpwajib','mahasiswa.username','mahasiswaskpwajib.mahasiswa_username')
         // ->leftJoin('pengajuan_skp_pilihan','mahasiswa.username','pengajuan_skp_pilihan.nim')
-        // ->where('pengajuan_skp_pilihan.status', 'Disetujui')
+        //->where('pengajuan_skp_pilihan.status', 'Disetujui')
+          
         // ->orWhere()
         ->get();
         //dd($daftarmhs);
@@ -85,6 +86,19 @@ class DPALaporanController extends Controller
         //     $jumlahpkd = $pndijumlah->poin_skp + $jumlahpkd;
 
         return view('dpa.daftar-mahasiswa',compact('daftarmhs'));
+    }
+    public function tampilmhs($id)
+    {
+        $detailmhspilihan = Mahasiswa::where ('mahasiswa.id', $id)
+        ->leftJoin('pengajuan_skp_pilihan','mahasiswa.username','pengajuan_skp_pilihan.nim')
+        ->select('pengajuan_skp_pilihan.nama_kegiatan','pengajuan_skp_pilihan.poin','pengajuan_skp_pilihan.status')
+        ->where ('status', '=', 'Disetujui')
+        ->get();
+
+        $detailmhswajib = Mahasiswa::where ('mahasiswa.id', $id)
+        ->leftJoin('mahasiswaskpwajib','mahasiswa.username','mahasiswaskpwajib.mahasiswa_username')
+        ->select('mahasiswaskpwajib.aktivitas_kemahasiswaan','mahasiswaskpwajib.poin_skp','mahasiswaskpwajib.skp_wajib_nama_kegiatan')->get();
+        return view('dpa.detail-mahasiswa', compact('detailmhspilihan','detailmhswajib'));
     }
 
     

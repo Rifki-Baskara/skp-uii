@@ -41,9 +41,26 @@
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade show active" id="skpWajib">
 
-                                                <h2 class="font-weight-bold">Jumlah SKP {{Auth::user()->nama}} 20/50</h2>
-                                                <br>
-
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Sarjana')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Wajib {{Auth::user()->nama}} {{$wajibs}}/10</h2>
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Diploma')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Wajib {{Auth::user()->nama}} {{$wajibd}}/10</h2>
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Wajib {{Auth::user()->nama}} {{$jumlahwajib3}}/5</h2>
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Wajib {{Auth::user()->nama}} {{$jumlahwajib4}}/5</h2>
+                                                        </div>
+										            @endif
                                                 <!-- TABEL SKP Wajib -->
                                                 <div class="table-responsive">
                                                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -57,7 +74,6 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach($tampilSkpWajib as $datawajib)
-                                                            
                                                             <tr>
                                                                 <td>{{$loop->iteration}}</td>
                                                                 <td>{{$datawajib->aktivitas_kemahasiswaan}}</td>
@@ -72,10 +88,26 @@
 
                                             <div role="tabpanel" class="tab-pane fade" id="skpPilihan">
                                                 <div class="row">
-                                                    <div class="col-sm-8">
-                                                        <h2 class="font-weight-bold">Jumlah SKP Pilihan 09/10</h2>
-                                                        <br>
-                                                    </div>
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Sarjana')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Pilihan {{Auth::user()->nama}} {{$jumlahsarjana}}/10</h2>
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Diploma')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Pilihan {{Auth::user()->nama}} {{$jumlahdiploma}}/10</h2>
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Pilihan {{Auth::user()->nama}} {{$jumlah3}}/5</h2>
+                                                        </div>
+                                                    @endif
+                                                    @if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi')
+                                                        <div class="col-sm-8">
+                                                            <h2 class="font-weight-bold">Jumlah SKP Pilihan {{Auth::user()->nama}} {{$jumlah4}}/5</h2>
+                                                        </div>
+										            @endif
                                                     <div class="col-sm-4 text-right">
                                                         <a class="btn btn-primary" href="/mahasiswa/laporan/create" role="button">Pengajuan SKP Pilihan</a>
                                                     </div>
@@ -90,6 +122,7 @@
                                                                 <th>Nama Kegiatan</th>
                                                                 <th>Waktu Pelaksanaan</th>
                                                                 <th>Status</th>
+                                                                <th>Poin</th>
                                                                 <th>Aksi</th>
                                                             </tr>
                                                         </thead>
@@ -100,6 +133,7 @@
                                                                 <td>{{$data->nama_kegiatan}}</td>
                                                                 <td>{{$data->tanggal_mulai}}</td>
                                                                 <td>{{$data->status}}</td>
+                                                                <td>{{$data->poin}}</td>
                                                                 <td>
                                                                     @if ($data->status !== 'Disetujui' && $data->status !== 'Disetujui dan layak masuk SKPI')
                                                                     <a class="btn btn-link" href="/mahasiswa/laporan/edit/{{ $data->id }}"><i class="fa fa-pencil" style="color:#093697"></i></a>

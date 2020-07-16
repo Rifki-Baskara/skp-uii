@@ -8,28 +8,28 @@ use App\SkpWajib;
 use App\DataMhsSkpWajib;
 use App\PengajuanSkpPilihan;
 use App\Http\Requests\DataMhsSkpWajib\Store;
+use App\Http\Requests\SKPPilihan\Store2;
 
-class SKPSuperAdminPesertaController extends Controller
+
+class SKPProdiPesertaWController extends Controller
 {
     public function index()
     {
         $dataMhs = DataMhsSkpWajib::all();
-        $skpwajib = SkpWajib::where('penyelenggara', 'like', '%Universitas%')->get();
-        $mhsPilihan = PengajuanSkpPilihan::where('penyelenggara', 'Universitas')->get();
-        return view('SKPSuperAdmin.SKPSuperAdmin-peserta-kegiatan',compact('skpwajib','dataMhs','mhsPilihan'));
+        $skpwajib = SkpWajib::where('penyelenggara', 'like', '%Fakultas%')->get();
+        return view('SKPProdi.SKPProdi-peserta-kegiatan', compact('skpwajib','dataMhs'));
     }
-
     public function show(\App\SkpWajib $skpwajib)
     {
         $dataMhs = DataMhsSkpWajib::where([
             ['skp_wajib_nama_kegiatan', '=', $skpwajib->nama_kegiatan],
             ['jenjang_pendidikan','=', $skpwajib->jenjang_pendidikan],
         ])->get();
-        return view('SKPSuperAdmin.SKPSuperAdmin-peserta-kegiatan-showMhs', compact('skpwajib','dataMhs'));
+        return view('SKPProdi.SKPProdi-peserta-kegiatan-showMhs', compact('skpwajib','dataMhs'));
     }
     public function createW(\App\SkpWajib $skpwajib)
     {
-        return view('SKPSuperAdmin.SKPSuperAdmin-peserta-kegiatan-form',compact('skpwajib'));
+        return view('SKPProdi.SKPProdi-peserta-kegiatan-formWajib',compact('skpwajib'));
     }
     public function storeW(Store $request)
     {
@@ -37,16 +37,37 @@ class SKPSuperAdminPesertaController extends Controller
 
         
         foreach ($data as $row) {
-        $dataMhs = new DataMhsSkpWajib();
-        $dataMhs->mahasiswa_nama = $row[0];
-        $dataMhs->mahasiswa_username = $row[1];
-        $dataMhs->mahasiswa_fakultas = $request->mahasiswa_fakultas;
-        $dataMhs->mahasiswa_jurusan = $request->mahasiswa_jurusan;
-        $dataMhs->jenjang_pendidikan = $request->jenjang_pendidikan;
-        $dataMhs->aktivitas_kemahasiswaan = $request->aktivitas_kemahasiswaan;
-        $dataMhs->skp_wajib_nama_kegiatan = $request->skp_wajib_nama_kegiatan;
-        $dataMhs->poin_skp = $request->poin_skp;
-        $dataMhs->save();
+            $pengajuanPilihan = new PengajuanSkpPilihan();
+            $pengajuanPilihan->nama_mhs = $row[0];
+            $pengajuanPilihan->nim = $row[1];
+            $pengajuanPilihan->nama_kegiatan = $request->nama_kegiatan;
+            $pengajuanPilihan->domain_profil = $request->domain_profil;
+            $pengajuanPilihan->aktivitas_kemahasiswaan = $request->aktivitas_kemahasiswaan;
+            $pengajuanPilihan->lokasi = $request->lokasi;
+            $pengajuanPilihan->penyelenggara = $request->penyelenggara;
+            $pengajuanPilihan->prestasi = $request->prestasi;
+            $pengajuanPilihan->tanggal_mulai = $request->tanggal_mulai;
+            $pengajuanPilihan->tanggal_selesai = $request->tanggal_selesai;
+            $pengajuanPilihan->level_kegiatan = $request->level_kegiatan;
+            $pengajuanPilihan->deskripsi = $request->deskripsi;
+            $pengajuanPilihan->poin = $request->poin;
+            $pengajuanPilihan->status = 'Disetujui';
+            $pengajuanPilihan->jenjang = $request->jenjang;
+            $pengajuanPilihan->komentar = $request->komentar;
+            $berkas = $request->file('berkas_kegiatan');
+                $temp = [];
+                // dd($berkas);
+                if(!empty($berkas)):
+                    foreach($berkas as $berkass):
+                        $temp[] = $berkass->getClientOriginalName();
+                        // ($berkass->getClientOriginalName());
+                        // Storage::put($berkass->getClientOriginalName(), file_get_contents($berkass)); 
+                    $berkass->move('berkas_pengajuan', /*$request->berkas_kegitaan,*/ $berkass->getClientOriginalName()/*.$ekstensiBerkas*/);
+                    endforeach;
+                endif;    
+            $pengajuanPilihan->berkas_kegiatan = $temp;
+    
+            $pengajuanPilihan->save();
         }
 
         return redirect()->back()->with('status','Berhasil menyimpan data mahasiswa');
@@ -56,10 +77,10 @@ class SKPSuperAdminPesertaController extends Controller
     {
         $domain = \App\DomainProfilLulusan::all();
         $aktivitas = \App\SkpPilihan::all();
-        return view('SKPSuperAdmin.SKPSuperAdmin-peserta-kegiatan-formPilihan', compact('domain','aktivitas'));
+        return view('SKPProdi.SKPProdi-peserta-kegiatan-formPilihan', compact('domain','aktivitas'));
     }
 
-    public function storeP(Store $request)
+    public function storeP(Request $request)
     {
         $request->validate([
             'nama_kegiatan' => 'required',
@@ -133,4 +154,5 @@ class SKPSuperAdminPesertaController extends Controller
         }
         return redirect()->back()->with('status','Berhasil menyimpan data mahasiswa');
     }
+    
 }

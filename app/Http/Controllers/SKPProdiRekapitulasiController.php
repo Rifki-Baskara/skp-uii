@@ -20,6 +20,7 @@ class SKPProdiRekapitulasiController extends Controller
             ['domain_profil', 'Kepribadian Islami'],
             ['status', 'Disetujui'],
             ['nim', 'like', '%%'.Auth::user()->kode.'%%%%'], 
+
         ])->count();
         $keterampilanTransformatif = PengajuanSkpPilihan::where([
             ['domain_profil', 'Keterampilan Transformatif'],

@@ -170,7 +170,7 @@
     <script src="assets/js/init/fullcalendar-init.js"></script>
 
     <!--Local Stuff-->
-
+    
     @stack('script')
     <script>
         jQuery(document).ready(function($) {

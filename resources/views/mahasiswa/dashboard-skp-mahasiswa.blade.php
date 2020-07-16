@@ -50,39 +50,59 @@
 														<td>Pelatihan Kepemimpinan dan Dakwah (PKD)</td>
 														<td> : {{$jumlahpkd}}/5</td>
 													</tr>
+													<tr>
+														<td>Perolehan SKP Wajib</td>
+														<td> : {{$wajibs}}/50</td>
+													</tr>
 											@endif
 											@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Diploma')
 											<tr>
 												<td>Pendalaman Nilai Dasar Islam (PNDI)</td>
-												<td> : {{$pndidiploma !== null ? $pndidiploma->poin_skp : '0'}}</td>
+												<td> : {{$pndidiploma !== null ? $pndidiploma->poin_skp : '0'}}/10</td>
 											</tr>
 											<tr>
 												<td>Pengembangan DIri Qurani (PDQ)</td>
-												<td> : {{$$pdqdiploma !== null ? $pdqdiploma->poin_skp : '0'}}</td>
+												<td> : {{$$pdqdiploma !== null ? $pdqdiploma->poin_skp : '0'}}/10</td>
 											</tr>
 											<tr>
 												<td>Pelatihan Pengembangan Diri (PPD) </td>
-												<td> : {{$$ppddiploma !== null ? $ppddiploma->poin_skp : '0'}}</td>
+												<td> : {{$$ppddiploma !== null ? $ppddiploma->poin_skp : '0'}}/5</td>
 											</tr>
 											<tr>
 												<td>Pelatihan Kepemimpinan dan Dakwah (PKD)</td>
-												<td> : {{$pkddiploma !== null ? $pkddiploma->poin_skp : '0'}}</td>
+												<td> : {{$pkddiploma !== null ? $pkddiploma->poin_skp : '0'}}/5</td>
 											</tr>
 											@endif
-											@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
+											@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
 											<tr>
 												<td>Studi Intensif Al-Quran</td>
-												<td> : {{$studi !== null ? $studi->poin_skp : '0'}}</td>
+												<td> : {{$studi !== null ? $studi->poin_skp : '0'}}/5</td>
 											</tr>
 											<tr>
 												<td>Islam Rahmatan lil 'Alamin</td>
-												<td> : {{$islam !== null ? $islam->poin_skp : '0'}}</td>
+												<td> : {{$islam !== null ? $islam->poin_skp : '0'}}/3</td>
 											</tr>
 											<tr>
 												<td>Pengabdian kepada Masyarakat</td>
-												<td> : {{$pengabdian !== null ? $pengabdian->poin_skp : '0'}}</td>
+												<td> : {{$pengabdian !== null ? $pengabdian->poin_skp : '0'}}/2</td>
 											</tr>
 											@endif
+											@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi')
+											<tr>
+												<td>Studi Intensif Al-Quran</td>
+												<td> : {{$studi !== null ? $studi->poin_skp : '0'}}/2</td>
+											</tr>
+											<tr>
+												<td>Islam Rahmatan lil 'Alamin</td>
+												<td> : {{$islam !== null ? $islam->poin_skp : '0'}}/2</td>
+											</tr>
+											<tr>
+												<td>Pengabdian kepada Masyarakat</td>
+												<td> : {{$pengabdian !== null ? $pengabdian->poin_skp : '0'}}/2</td>
+											</tr>
+											@endif
+
+
 										</table>
 									</div>
 								</div>
@@ -105,10 +125,16 @@
 												<td> : {{$jumlahdiploma}}/10</td>
 											</tr>
 										@endif
-										@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
+										@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Magister'||Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Doktor')
 											<tr>
 												<td>Perolehan SKP Pilihan</td>
 												<td> : {{$jumlah3}}/5</td>
+											</tr>
+										@endif
+										@if(Auth::guard('mahasiswa')->user()->jenjang_pendidikan == 'Profesi')
+											<tr>
+												<td>Perolehan SKP Pilihan</td>
+												<td> : {{$jumlah4}}/5</td>
 											</tr>
 										@endif
 										</table>

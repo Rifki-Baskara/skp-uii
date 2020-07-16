@@ -50,6 +50,7 @@
                                                                 <th>Nama Aktivitas</th>
                                                                 <th>Nama Kegiatan</th>
                                                                 <th>Poin SKP</th>
+                                                                <th>Bukti Pendukung</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -59,6 +60,7 @@
                                                                 <td>{{$datawajib->nama_aktivitas}}</td>
                                                                 <td>{{$datawajib->nama_kegiatan}}</td>
                                                                 <td>{{$datawajib->poin_skp}}</td>
+                                                                <td>{{$datawajib->bukti_kegiatan}}</td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>

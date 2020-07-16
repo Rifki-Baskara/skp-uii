@@ -43,6 +43,8 @@ class SKPNonProdiPesertaController extends Controller
         $dataMhs = new DataMhsSkpWajib();
         $dataMhs->mahasiswa_nama = $row[0];
         $dataMhs->mahasiswa_username = $row[1];
+        $dataMhs->mahasiswa_fakultas = $request->mahasiswa_fakultas;
+        $dataMhs->mahasiswa_jurusan = $request->mahasiswa_jurusan;
         $dataMhs->jenjang_pendidikan = $request->jenjang_pendidikan;
         $dataMhs->aktivitas_kemahasiswaan = $request->aktivitas_kemahasiswaan;
         $dataMhs->skp_wajib_nama_kegiatan = $request->skp_wajib_nama_kegiatan;

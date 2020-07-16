@@ -43,7 +43,6 @@
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade show active" id="skpWajib">
                                                 <!-- TABEL SKP Wajib -->
-
                                                 <div class="table-responsive">
                                                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                                         <thead>

@@ -36,7 +36,9 @@
                                         <th>No</th>
                                         <th>Jenjang</th>
                                         <th>NIM</th>
-                                        <th>Nama Mahasiswa</th>		
+                                        <th>Nama Mahasiswa</th>
+                                        <th>Angkatan</th>
+                                        <th>Aksi</th>		
 									</tr>
 								</thead>
 								<tbody>
@@ -46,6 +48,10 @@
                                         <td>{{$datamhs->jenjang_pendidikan}}</td>
                                         <td>{{$datamhs->username}}</td>
                                         <td>{{$datamhs->nama}}</td>
+                                        <td>{{$datamhs->angkatan}}</td>
+                                        <td>
+                                            <a class="btn btn-link" href="/dpa/daftar/show/{{ $datamhs->id }}"><i class="fa fa-eye" style="color:#093697"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
 								</tbody>    
