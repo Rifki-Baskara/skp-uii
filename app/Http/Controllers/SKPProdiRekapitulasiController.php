@@ -13,31 +13,34 @@ class SKPProdiRekapitulasiController extends Controller
     public function index()
     {
         if (Auth::guard('fakultas')->user()){
-        $mhsSkpWajib = DataMhsSkpWajib::where('mahasiswa_username', 'like', '%%'.Auth::user()->kode.'%%%%%')->get();
+        $mhsSkpWajib = DataMhsSkpWajib::where('mahasiswa_username', 'like', '%%'.Auth::user()->kode.'%%%%')->get();
+        $mhsSkpPilihan = PengajuanSkpPilihan::where('nim', 'like', '%%'.Auth::user()->kode.'%%%%')->get();
 
         $kepribadianIslami = PengajuanSkpPilihan::where([
             ['domain_profil', 'Kepribadian Islami'],
             ['status', 'Disetujui'],
-            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%%'], 
+            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%'], 
+
         ])->count();
         $keterampilanTransformatif = PengajuanSkpPilihan::where([
             ['domain_profil', 'Keterampilan Transformatif'],
             ['status', 'Disetujui'],
-            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%%']
+            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%']
         ])->count();
         $kepemimpinanProfetik = PengajuanSkpPilihan::where([
             ['domain_profil', 'Ketpemimpinan Profetik'],
             ['status', 'Disetujui'],
-            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%%']
+            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%']
         ])->count();
         $pengetahuanIntegratif = PengajuanSkpPilihan::where([
             ['domain_profil', 'Pengetahuan Integratif'],
             ['status', 'Disetujui'],
-            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%%']
+            ['nim', 'like', '%%'.Auth::user()->kode.'%%%%']
         ])->count();
         }
         else if (Auth::guard('prodi')->user()){
             $mhsSkpWajib = DataMhsSkpWajib::where('mahasiswa_username', 'like', '%%'.Auth::user()->kode.'%%%')->get();
+            $mhsSkpPilihan = PengajuanSkpPilihan::where('nim', 'like', '%%'.Auth::user()->kode.'%%%')->get();
     
             $kepribadianIslami = PengajuanSkpPilihan::where([
                 ['domain_profil', 'Kepribadian Islami'],
@@ -50,7 +53,7 @@ class SKPProdiRekapitulasiController extends Controller
                 ['nim', 'like', '%%'.Auth::user()->kode.'%%%']
             ])->count();
             $kepemimpinanProfetik = PengajuanSkpPilihan::where([
-                ['domain_profil', 'Ketpemimpinan Profetik'],
+                ['domain_profil', 'Kepemimpinan Profetik'],
                 ['status', 'Disetujui'],
                 ['nim', 'like', '%%'.Auth::user()->kode.'%%%']
             ])->count();
@@ -66,7 +69,8 @@ class SKPProdiRekapitulasiController extends Controller
         'keterampilanTransformatif',
         'kepemimpinanProfetik',
         'pengetahuanIntegratif',
-        'mhsSkpWajib'));
+        'mhsSkpWajib',
+        'mhsSkpPilihan'));
     }
     public function create()
     {

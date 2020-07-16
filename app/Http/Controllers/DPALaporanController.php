@@ -78,6 +78,7 @@ class DPALaporanController extends Controller
         // ->leftJoin('mahasiswaskpwajib','mahasiswa.username','mahasiswaskpwajib.mahasiswa_username')
         // ->leftJoin('pengajuan_skp_pilihan','mahasiswa.username','pengajuan_skp_pilihan.nim')
         //->where('pengajuan_skp_pilihan.status', 'Disetujui')
+          
         // ->orWhere()
         ->get();
         //dd($daftarmhs);

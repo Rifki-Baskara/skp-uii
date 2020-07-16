@@ -9,7 +9,7 @@
                 <div class="page-header float-left">
                     <div class="page-title">
                         <ol class="breadcrumb text-left">
-                            <li><a href="/prodi"><i class="menu-icon fa fa-home"></i> </a></li>
+                            <li><a href="/superadmin"><i class="menu-icon fa fa-home"></i> </a></li>
                             <li class="active">Peserta Kegiatan SKP</li>
                         </ol>
                     </div>

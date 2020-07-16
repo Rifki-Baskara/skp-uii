@@ -51,6 +51,8 @@ Route::get('/nonprodi/peserta', 'SKPNonProdiPesertaController@index')->middlewar
 Route::get('/nonprodi/peserta/show/{skpwajib}', 'SKPNonProdiPesertaController@show')->middleware('auth:dppai');
 Route::get('/nonprodi/peserta/show/{skpwajib}/create', 'SKPNonProdiPesertaController@create')->middleware('auth:dppai');
 Route::post('/nonprodi/peserta/show/{skpwajib}/store', 'SKPNonProdiPesertaController@store')->middleware('auth:dppai');
+    //Rekapitulasi
+Route::get('/nonprodi/rekapitulasi', 'SKPNonProdiRekapitulasiController@index')->middleware('auth:dppai');
 //Route::get('/nonprodi/peserta/tambah', 'SKPNonProdiPesertaController@tambah');
 
 //SKP Super Admin

@@ -9,8 +9,8 @@
                 <div class="page-header float-left">
                     <div class="page-title">
                         <ol class="breadcrumb text-left">
-                            <li><a href="/superadmin"><i class="menu-icon fa fa-home"></i> </a></li>
-                            <li><a href="/superadmin/masterA">Master Aktivitas</a></li>
+                            <li><a href="/nonprodi"><i class="menu-icon fa fa-home"></i> </a></li>
+                            <li><a href="/nonprodi/master">Master Aktivitas</a></li>
                             <li class="active">Ubah</li>
                         </ol>
                     </div>

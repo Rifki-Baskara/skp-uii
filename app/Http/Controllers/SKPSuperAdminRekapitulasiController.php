@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 use App\PengajuanSkpPilihan;
 use App\DataMhsSkpWajib;
 
-class SKPSUperAdminRekapitulasiController extends Controller
+class SKPSuperAdminRekapitulasiController extends Controller
 {
     public function index()
     {
         $mhsSkpWajib = DataMhsSkpWajib::all();
+        $mhsSkpPilihan = PengajuanSkpPilihan::all();
 
         $kepribadianIslami = PengajuanSkpPilihan::where([
             ['domain_profil', 'Kepribadian Islami'],
@@ -22,7 +23,7 @@ class SKPSUperAdminRekapitulasiController extends Controller
             ['status', 'Disetujui'],
         ])->count();
         $kepemimpinanProfetik = PengajuanSkpPilihan::where([
-            ['domain_profil', 'Ketpemimpinan Profetik'],
+            ['domain_profil', 'Kepemimpinan Profetik'],
             ['status', 'Disetujui'],
         ])->count();
         $pengetahuanIntegratif = PengajuanSkpPilihan::where([
@@ -35,7 +36,8 @@ class SKPSUperAdminRekapitulasiController extends Controller
         'keterampilanTransformatif',
         'kepemimpinanProfetik',
         'pengetahuanIntegratif',
-        'mhsSkpWajib'));
+        'mhsSkpWajib',
+        'mhsSkpPilihan'));
     }
 
     public function filter()

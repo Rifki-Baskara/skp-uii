@@ -9,7 +9,7 @@ use App\DataMhsSkpWajib;
 use App\PengajuanSkpPilihan;
 use App\Http\Requests\DataMhsSkpWajib\Store;
 
-class SKPSUperAdminPesertaController extends Controller
+class SKPSuperAdminPesertaController extends Controller
 {
     public function index()
     {

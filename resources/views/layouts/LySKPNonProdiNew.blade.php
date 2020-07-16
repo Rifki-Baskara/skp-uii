@@ -83,8 +83,8 @@
                     <li class="{{ (request()->is('nonprodi/peserta*')) ? 'active' : '' }}">
                         <a href="/nonprodi/peserta"> <i class="menu-icon fa fa-table"></i>Peserta Kegiatan SKP</a>
                     </li>
-                    <li class="{{ (request()->is('prodi/rekapitulasi*')) ? 'active' : '' }}">
-                        <a href="#"> <i class="menu-icon fa fa-table"></i>Rekapitulasi SKP</a>
+                    <li class="{{ (request()->is('nonprodi/rekapitulasi*')) ? 'active' : '' }}">
+                        <a href="/nonprodi/rekapitulasi"> <i class="menu-icon fa fa-table"></i>Rekapitulasi SKP</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
