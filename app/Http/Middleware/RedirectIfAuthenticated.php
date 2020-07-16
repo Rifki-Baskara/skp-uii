@@ -23,6 +23,19 @@ class RedirectIfAuthenticated
         if(Auth::guard('mahasiswa')->check()){
             return redirect('/mahasiswa');
         }
+        else if(Auth::guard('superadmin')->check()){
+            return redirect('/superadmin');
+        }
+        else if(Auth::guard('fakultas')->check()){
+            return redirect('/prodi');
+        }
+        else if(Auth::guard('prodi')->check()){
+            return redirect('/prodi');
+        }
+        else if(Auth::guard('dppai')->check()){
+            return redirect('/nonprodi');
+        }
+        
         
         return $next($request);
     }

@@ -889,14 +889,14 @@ aside.left-panel:hover {
 
 .navbar .navbar-nav li>a:hover,
 .navbar .navbar-nav li>a:hover .menu-icon {
-    color: #03a9f3;
+    color: #093697;
 }
 
 .navbar .navbar-nav li>a .menu-icon {
     color: #607d8b;
     float: left;
     margin-top: 8px;
-    width: 55px;
+    width: 35px;
     text-align: left;
     z-index: 9;
 }

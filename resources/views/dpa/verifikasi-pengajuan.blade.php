@@ -1,4 +1,4 @@
-@extends('layouts.LYdpa')
+@extends('layouts.LYdpaNew')
 
 @section('content')
 
@@ -78,8 +78,8 @@
 
                             </div>
                         </div>
-                    </div>
-                    <div class="col-6">
+                    
+                        <div class="col-6">
                             <div class="card bg-light">
                                 <h5 class="card-header bg-primary text-white">Verifikasi</h5>
                                 <div class="card-body">
@@ -122,13 +122,14 @@
                                             <a class="btn btn-secondary btn-lg mx-2" href="/dpa/laporan" role="button">Kembali</a>
                                             <button class="btn btn-success btn-lg mx-2" type="submit">Update</button>
                                         </div>
-									</table>
+                                    </table>
                                 </div>
-
                             </div>
                         </div>
-                        </form>
                     </div>
+                    </div>
+                    </form>
+                </div>
                 </div>
             </div>
         </div>
@@ -142,13 +143,28 @@
             $('#verifikasiSelector').change(function() {
                 // $('.komentar').hide();
                 console.log(this.value);
-                if(this.value=="Revisi"){
-                    $('#komentar').show(); 
-                }else if(this.value=="Ditolak"){
+                if(this.value=="Revisi")
+                {
                     $('#komentar').show();
-                }else if (this.value=="Disetujui dan layak masuk SKPI"){
+                    $('#kategori').hide();
+                }
+                else if(this.value=="Ditolak")
+                {
+                    $('#komentar').show();
+                    $('#kategori').hide();
+                }
+                else if (this.value=="Disetujui dan layak masuk SKPI")
+                {
                     $('#kategori').show(); 
-                }else{$('#komentar' & '#kategori').hide()}
+                    $('#komentar').hide();
+                }
+                else if (this.value=="Disetujui")
+                {
+                    $('#komentar').hide();
+                    $('#kategori').hide();
+                }
+                else{$('#komentar' & '#kategori').hide()
+                }
             });
         });
     </script>

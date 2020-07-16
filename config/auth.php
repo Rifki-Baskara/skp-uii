@@ -68,6 +68,50 @@ return [
             'provider' => 'dpa',
             'hash' => false,
         ],
+
+        'superadmin' => [
+            'driver' => 'session',
+            'provider' => 'superadmin',
+        ],
+
+        'apisuperadmin' => [
+            'driver' => 'token',
+            'provider' => 'superadmin',
+            'hash' => false,
+        ],
+
+        'fakultas' => [
+            'driver' => 'session',
+            'provider' => 'fakultas',
+        ],
+
+        'apifakultas' => [
+            'driver' => 'token',
+            'provider' => 'fakultas',
+            'hash' => false,
+        ],
+
+        'prodi' => [
+            'driver' => 'session',
+            'provider' => 'prodi',
+        ],
+
+        'apiprodi' => [
+            'driver' => 'token',
+            'provider' => 'prodi',
+            'hash' => false,
+        ],
+
+        'dppai' => [
+            'driver' => 'session',
+            'provider' => 'dppai',
+        ],
+
+        'apidppai' => [
+            'driver' => 'token',
+            'provider' => 'dppai',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -99,6 +143,22 @@ return [
         'dpa' => [
             'driver' => 'eloquent',
             'model' => App\Login_Dpa::class,
+        ],
+        'superadmin' => [
+            'driver' => 'eloquent',
+            'model' => App\Login_SuperAdmin::class,
+        ],
+        'fakultas' => [
+            'driver' => 'eloquent',
+            'model' => App\Login_Fakultas::class,
+        ],
+        'prodi' => [
+            'driver' => 'eloquent',
+            'model' => App\Login_Prodi::class,
+        ],
+        'dppai' => [
+            'driver' => 'eloquent',
+            'model' => App\Login_DPPAI::class,
         ],
 
         // 'users' => [

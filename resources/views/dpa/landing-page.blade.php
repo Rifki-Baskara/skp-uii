@@ -1,4 +1,4 @@
-@extends('layouts.LYdpa')
+@extends('layouts.LYdpaNew')
 
 @section('content')
 

@@ -35,7 +35,7 @@
                                     <table>
 										<tr>
     										<td>Nama Kegiatan</td>
-                                            <td>: {{$show->nama_Kegiatan}}</td>
+                                            <td>: {{$show->nama_kegiatan}}</td>
 										</tr>
 										<tr>
 											<td>Domain Profil Lulusan</td>

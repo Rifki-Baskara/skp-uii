@@ -76,15 +76,16 @@
                                                                 <th>Nama Aktivitas</th>
                                                                 <th>Nama Kegiatan</th>
                                                                 <th>Poin SKP</th>
+                                                                <th>Bukti Pendukung</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             @foreach($info as $data)
-
                                                             <tr>
                                                                 <td>{{$loop->iteration}}</td>
                                                                 <td>{{$data->aktivitas_kemahasiswaan}}</td>
                                                                 <td>{{$data->domain_profil_lulusan_nama}}</td>
+                                                                <td>{{$data->poin_skp}}</td>
                                                                 <td>{{$data->bukti_kegiatan}}</td>
                                                             </tr>
                                                             @endforeach

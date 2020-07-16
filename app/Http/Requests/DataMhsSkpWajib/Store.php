@@ -46,7 +46,7 @@ class Store extends FormRequest
     public function messages()
     {
     return [
-        'data.*.nama.required' => 'Nama wajib diisi',
+        'data.*.nama.required' => 'Nama wajib diisi ',
         'data.*.mahasiswa_nim.required' => 'NIM wajib diisi',
         ];
     }
